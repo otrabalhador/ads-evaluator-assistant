@@ -1,33 +1,36 @@
-const templates = [
-  'This ad is about {{aboutAd}}. ' +
-  'I find it {{firstAspectText}} because {{firstAspectWhy}}. ' +
-  'I also find it {{secondAspectText}} because {{secondAspectWhy}}. ' +
-  'Therefore, I {{overallRatingText}}.',
+import templates from './models/templates'
+import aspectRating from './models/aspectRating'
+import overallRating from './models/overallRating'
+import overalRatingQualifier from './models/overalRatingQualifier'
 
-  'I {{overallRatingText}} about {{aboutAd}}. ' +
-  'It\'s {{firstAspectText}}, since {{firstAspectWhy}}. ' +
-  'I find it to be {{secondAspectText}} because {{secondAspectWhy}}.'
-]
+const randomFromList = (list) => {
+  return list[Math.floor(Math.random() * list.length)]
+}
+
+const extractFromAspectRatingIndex = (aspectRatingObj) => {
+  let tag = aspectRatingObj.tag
+  let rate = aspectRatingObj.rate
+  let text = aspectRating[tag][rate]
+  let why = aspectRatingObj.why
+  return {
+    text: text,
+    why: why
+  }
+}
 
 export default {
   aboutAd: state => state.aboutAd,
-  firstAspect: () => {
-    return {
-      text: 'not relevant',
-      why: 'I don\'t have a dog'
-    }
+  firstAspect: (state) => {
+    return extractFromAspectRatingIndex(state.aspectRating[0])
   },
-  secondAspect: () => {
-    return {
-      text: 'not relevant',
-      why: 'I don\'t have a dog'
-    }
+  secondAspect: (state) => {
+    return extractFromAspectRatingIndex(state.aspectRating[1])
   },
-  overallRatingText: () => {
-    return 'don\'t mind seeing this ad'
+  overallRatingText: (state) => {
+    return randomFromList(overallRating[state.overallRating])
   },
-  overallRatingTextQualifier: () => {
-    return 'cool'
+  overallRatingTextQualifier: (state) => {
+    return randomFromList(overalRatingQualifier[state.overallRating])
   },
   placeholders: (state, getters) => {
     return {
@@ -41,8 +44,7 @@ export default {
     }
   },
   generatedComment: (state, getters) => {
-    let randomNumber = Math.floor(Math.random() * templates.length)
-    return templates[randomNumber].replace(/{{\w+}}/g, all => {
+    return randomFromList(templates).replace(/{{\w+}}/g, all => {
       return getters.placeholders[all] || all
     })
   }
