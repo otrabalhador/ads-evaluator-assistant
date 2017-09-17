@@ -27,6 +27,6 @@ export default {
   reset: state => {
     state.aboutAd = ''
     state.overallRating = ''
-    state.aspectRating = [{}, {}]
+    state.aspectRating = [{'rate': '', 'tag': '', 'why': ''}, {'rate': '', 'tag': '', 'why': ''}]
   }
 }

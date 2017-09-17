@@ -153,6 +153,11 @@ export default {
     @include primary-color-dark-outline
   }
 
+  input[type="text"].active {
+    @include primary-color-dark
+  }
+
+
   textarea {
     outline: none;
     @include primary-color-dark-outline

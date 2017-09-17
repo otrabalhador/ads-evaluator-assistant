@@ -5,7 +5,7 @@
 
       <!-- search -->
       <div class="-item">
-        <input type="text" placeholder="buscar ...">
+        <input type="text" placeholder="filtrar ...">
       </div>
 
       <!-- options -->
@@ -23,7 +23,12 @@
 
       <!-- another -->
       <div class="-item">
-        <input type="text" placeholder="outro ...">
+        <input type="text"
+               placeholder="outro ..."
+               v-model="otherWhy"
+               :class="{ active: currentWhy === otherWhy }"
+               @input="setAspectRatingWhy($event.target.value)"
+               @click="setAspectRatingWhy($event.target.value)">
       </div>
     </div>
   </div>
@@ -33,6 +38,11 @@
   export default {
     name: 'aspect-rating-why',
     props: ['index'],
+    data () {
+      return {
+        otherWhy: ''
+      }
+    },
     computed: {
       aspectRatingWhys () {
         return this.$store.getters.aspectRatingWhys
@@ -43,11 +53,13 @@
     },
     methods: {
       setAspectRatingWhy (why) {
-        this.$store.commit({
-          type: 'setAspectRatingWhy',
-          why: why,
-          index: this.index
-        })
+        if (why) {
+          this.$store.commit({
+            type: 'setAspectRatingWhy',
+            why: why,
+            index: this.index
+          })
+        }
       }
     }
   }
