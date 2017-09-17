@@ -30,6 +30,9 @@ export default {
   @mixin primary-color-light {
     background-color: $primary-color-light;
     color: black;
+    * {
+      color: black;
+    }
   }
 
   @mixin primary-color-dark {
@@ -94,7 +97,11 @@ export default {
     @include primary-color-dark-outline;
   }
 
-  button:hover, button:focus {
+  button:hover {
+    @include primary-color-light;
+  }
+
+  button:focus {
     @include primary-color-dark;
     outline: none;
   }
@@ -113,4 +120,20 @@ export default {
   }
 
 
+  input[type="text"] {
+    height: 50px;
+    width: 500px;
+    padding: 5px;
+
+    border-radius: 5px;
+    outline: none;
+
+    display: flex;
+
+    @include primary-color-dark-outline
+  }
+
+  input:hover {
+    @include primary-color-light;
+  }
 </style>

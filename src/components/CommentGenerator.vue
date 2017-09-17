@@ -8,8 +8,7 @@
     <div class="container">
 
       <div class="about-ad">
-        <label>Descrição do anúncio</label>
-        <input @change="updateAboutAd" v-model="aboutAd" placeholder="descrição do anúncio...">
+        <about-ad></about-ad>
       </div>
 
       <div class="overall-rating">
@@ -36,6 +35,7 @@
   import GeneratedMessage from '@/components/GeneratedMessage'
   import OverallRating from '@/components/OverallRating'
   import AspectRating from '@/components/AspectRating'
+  import AboutAd from '@/components/AboutAd'
   export default {
     name: 'comment-generator',
     data () {
@@ -48,7 +48,7 @@
         this.$store.commit('aboutAd', this.aboutAd)
       }
     },
-    components: {GeneratedMessage, OverallRating, AspectRating}
+    components: {GeneratedMessage, OverallRating, AspectRating, AboutAd}
   }
 </script>
 
