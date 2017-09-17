@@ -91,7 +91,7 @@ export default {
   * {
     font-family: 'Roboto Mono', monospace;
     font-size: 1em;
-    color: rgba(0, 0, 0, 0.76);
+    color: rgba(0, 0, 0, 0.65);
   }
 
   h1 { font-size: calc(5vw + 0.5em); }
@@ -110,7 +110,11 @@ export default {
 
   button {
     border: 1px solid;
-    margin: 1px;
+    margin-left: 5px;
+  }
+
+  button:not(:first-child) {
+    margin-top: 2px;
   }
 
   button:focus {
@@ -144,13 +148,36 @@ export default {
 
   input[type="text"] {
     outline: none;
-
+    padding: 10px;
+    border-radius: 5px;
     @include primary-color-dark-outline
   }
 
   textarea {
     outline: none;
     @include primary-color-dark-outline
+  }
+
+  /*AspectRatingWhy*/
+  li.why {
+
+    @include primary-color-dark-outline;
+
+    p.en {
+      font-style: italic;
+      color: $primary-color-normal;
+    }
+
+  }
+
+  li.why.active {
+
+    @include primary-color-dark;
+
+    p.en {
+      font-style: italic;
+    }
+
   }
 
 </style>

@@ -19,6 +19,11 @@ export default {
     state.aspectRating[index].tag = tag
     state.aspectRating[index].rate = rate
   },
+  setAspectRatingWhy: (state, payload) => {
+    let index = payload.index
+    let why = payload.why
+    state.aspectRating[index].why = why
+  },
   reset: state => {
     state.aboutAd = ''
     state.overallRating = ''

@@ -26,8 +26,5 @@
   input[type="text"] {
     height: 50px;
     min-width: 75vw;
-    padding: 5px;
-
-    border-radius: 5px;
   }
 </style>

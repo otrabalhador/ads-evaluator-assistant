@@ -79,7 +79,7 @@
       flex-direction: column;
 
       button {
-        margin: 1px;
+        display: flex;
       }
 
     }

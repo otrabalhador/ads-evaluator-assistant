@@ -22,6 +22,10 @@ export default {
   aboutAd: state => state.aboutAd,
   aspects: state => state.aspects,
   overallRating: state => state.overallRating,
+  aspectRatingWhys: state => state.aspectRatingWhys,
+  currentWhy: state => {
+    return state.aspectRating.map(el => el.why)
+  },
   nthAspectSelectArray: (state) => {
     return index => {
       let aspect = state.aspectRating[index]
