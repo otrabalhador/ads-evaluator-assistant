@@ -1,25 +1,34 @@
 <template>
   <div class="comment-generator">
-    <h1>Lilappen</h1>
+    <header>
+      <h1>Lilappen</h1>
+    </header>
     <!-- aboutAd -->
-    <div class="aboutAd">
-      <label>Descrição do anúncio</label>
-      <input @change="updateAboutAd" v-model="aboutAd" placeholder="descrição do anúncio...">
-    </div>
 
-    <overall-rating></overall-rating>
+    <div class="container">
 
-    <div class="aspectRating">
-      <div>
+      <div class="about-ad">
+        <label>Descrição do anúncio</label>
+        <input @change="updateAboutAd" v-model="aboutAd" placeholder="descrição do anúncio...">
+      </div>
+
+      <div class="overall-rating">
+        <overall-rating></overall-rating>
+      </div>
+
+      <div class="aspect-rating-1">
         <aspect-rating index="0"></aspect-rating>
       </div>
-      <div>
-        <aspect-rating index="1"></aspect-rating>
+
+      <div class="aspect-rating-2">
+          <aspect-rating index="1"></aspect-rating>
       </div>
+
+      <div class="generated-message">
+        <generated-message></generated-message>
+      </div>
+
     </div>
-
-    <generated-message></generated-message>
-
   </div>
 </template>
 
@@ -43,21 +52,53 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
-  .aspectRating {
-    padding: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  /*.aspectRating {*/
+    /*padding: 50px;*/
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*justify-content: center;*/
+  /*}*/
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (min-width: 600px){
+    .container {
+      grid-template-areas:
+        "header            header"
+        "about-ad          about-ad"
+        "overall-rating    overall-rating"
+        "aspect-rating-1   aspect-rating-2"
+        "generated-message generated-message";
+
+      justify-items: center;
+    }
   }
 
-  .aspectRating > div {
-      width: 40vw;
+  @media screen and (max-width: 600px){
+    .container {
+      grid-template-areas:
+        "header            header"
+        "about-ad          about-ad"
+        "overall-rating    overall-rating"
+        "aspect-rating-1   aspect-rating-1"
+        "aspect-rating-2   aspect-rating-2"
+        "generated-message generated-message";
+
+      justify-items: center;
+    }
   }
 
-  .aspectRating > div:last-child {
-    border-left: 1px solid #bcbcbc;
-  }
+
+
+  header { grid-area: header }
+  .about-ad { grid-area: about-ad }
+  .overall-rating { grid-area: overall-rating }
+  .aspect-rating-1 { grid-area: aspect-rating-1 }
+  .aspect-rating-2 { grid-area: aspect-rating-2 }
+  .generated-message { grid-area: generated-message }
 
 </style>
