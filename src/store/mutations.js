@@ -18,5 +18,10 @@ export default {
     let rate = payload.rate
     state.aspectRating[index].tag = tag
     state.aspectRating[index].rate = rate
+  },
+  reset: state => {
+    state.aboutAd = ''
+    state.overallRating = ''
+    state.aspectRating = [{}, {}]
   }
 }

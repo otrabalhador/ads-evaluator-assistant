@@ -11,9 +11,9 @@
           <p>{{aspect}}</p>
         </div>
         <div class="rate">
-          <button :class="{ active: buttonActive === aspect + '1' }" @click="setAspectRating(aspect, 1)">1 - not at all</button>
-          <button :class="{ active: buttonActive === aspect + '2' }" @click="setAspectRating(aspect, 2)">2 - a little</button>
-          <button :class="{ active: buttonActive === aspect + '3' }" @click="setAspectRating(aspect, 3)">3 - a lot</button>
+          <button class="btn" :class="{ active: buttonActive === aspect + '1' }" @click="setAspectRating(aspect, 1)">1 - not at all</button>
+          <button class="btn" :class="{ active: buttonActive === aspect + '2' }" @click="setAspectRating(aspect, 2)">2 - a little</button>
+          <button class="btn" :class="{ active: buttonActive === aspect + '3' }" @click="setAspectRating(aspect, 3)">3 - a lot</button>
         </div>
 
       </template>

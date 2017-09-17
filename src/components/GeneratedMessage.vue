@@ -33,6 +33,8 @@
   textarea.generated-comment {
     min-width: 70vw;
     min-height: 10vh;
+    padding: 5px;
+    border-radius: 5px;
   }
 
   button {

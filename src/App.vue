@@ -79,6 +79,15 @@ export default {
     }
   }
 
+  @mixin secondary-color-dark-outline {
+    color: $secondary-color-dark;
+    border: 1px solid $secondary-color-dark;
+    background-color: white;
+    * {
+      color: $secondary-color-dark;
+    }
+  }
+
   * {
     font-family: 'Roboto Mono', monospace;
     font-size: 1em;
@@ -99,31 +108,32 @@ export default {
     align-items: center;
   }
 
-
   button {
-    border: 1px solid black;
+    border: 1px solid;
     margin: 1px;
   }
-
 
   button:focus {
     outline: none;
   }
 
-  button.active {
+  button.btn.active,
+  button.btn-inverse.active {
     @include primary-color-dark;
   }
 
-  button { @include primary-color-dark-outline; }
-  button:hover { @include primary-color-light; }
-  button:active { @include primary-color-dark; }
+  button.btn { @include primary-color-dark-outline; }
+  button.btn:active { @include primary-color-dark; }
 
   button.btn-inverse { @include primary-color-dark; }
-  button.btn-inverse:hover { @include primary-color-light; }
   button.btn-inverse:active { @include primary-color-dark-outline; }
 
+  button.btn-secondary { @include secondary-color-dark; }
+  button.btn-secondary:active { @include secondary-color-dark-outline; }
+
+
   .btn-big {
-    width: 15vw;
+    min-width: 15vw;
     padding: 10px;
   }
 
@@ -138,7 +148,9 @@ export default {
     @include primary-color-dark-outline
   }
 
-  input:hover {
-    @include primary-color-light;
+  textarea {
+    outline: none;
+    @include primary-color-dark-outline
   }
+
 </style>

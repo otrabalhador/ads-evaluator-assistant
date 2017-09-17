@@ -4,7 +4,7 @@
     <div class="buttons">
       <template v-for="option in buttonOptions">
 
-        <button class="btn-big" :class="{ active: overallRating == option.value}" @click="overallRating = option.value">
+        <button class="btn btn-big" :class="{ active: overallRating == option.value}" @click="overallRating = option.value">
           <p>{{option.text}}</p>
         </button>
       </template>
