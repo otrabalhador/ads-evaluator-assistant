@@ -11,5 +11,12 @@ export default {
       tag: content.tag,
       why: content.tag
     }
+  },
+  setAspectRating: (state, payload) => {
+    let index = payload.index
+    let tag = payload.tag
+    let rate = payload.rate
+    state.aspectRating[index].tag = tag
+    state.aspectRating[index].rate = rate
   }
 }

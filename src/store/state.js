@@ -4,5 +4,6 @@ export default {
   aspectRating: [
     {'rate': 1, 'tag': 'relevant', 'why': 'I don\'t watch TV'},
     {'rate': 1, 'tag': 'useful', 'why': 'I don\'t follow celebrities'}
-  ]
+  ],
+  aspects: ['useful', 'entertaining', 'offensive', 'misleading', 'relevant']
 }

@@ -32,11 +32,6 @@
   export default {
     name: 'overall-rating',
     components: { GeneratedMessage },
-    methods: {
-      updateAboutAd () {
-        this.$store.commit('aboutAd', this.aboutAd)
-      }
-    },
     computed: {
       overallRating: {
         get () { return this.$store.overallRating },
