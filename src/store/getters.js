@@ -21,6 +21,7 @@ const extractFromAspectRatingIndex = (aspectRatingObj) => {
 export default {
   aboutAd: state => state.aboutAd,
   aspects: state => state.aspects,
+  overallRating: state => state.overallRating,
   nthAspectSelectArray: (state) => {
     return index => {
       let aspect = state.aspectRating[index]

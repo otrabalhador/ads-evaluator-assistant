@@ -35,12 +35,18 @@ export default {
   @mixin primary-color-dark {
     background-color: $primary-color-dark;
     color: white;
+    * {
+      color: white;
+    }
   }
 
   @mixin primary-color-dark-outline {
     color: $primary-color-dark;
     border: 1px solid $primary-color-dark;
     background-color: white;
+    * {
+      color: $primary-color-dark;
+    }
   }
 
   @mixin secondary-color-normal {
@@ -84,15 +90,22 @@ export default {
 
   button {
     border: 1px solid black;
+    margin: 1px;
     @include primary-color-dark-outline;
   }
 
-  button:hover {
+  button:hover, button:focus {
     @include primary-color-dark;
+    outline: none;
   }
 
   button.active {
     @include primary-color-dark;
+  }
+
+  .btn-big {
+    width: 15vw;
+    padding: 10px;
   }
 
   div.single-aspect.active {
