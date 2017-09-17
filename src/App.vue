@@ -35,6 +35,15 @@ export default {
     }
   }
 
+  @mixin primary-color-light-outline {
+    color: $primary-color-light;
+    border: 1px solid $primary-color-light;
+    background-color: white;
+    * {
+      color: $primary-color-light;
+    }
+  }
+
   @mixin primary-color-dark {
     background-color: $primary-color-dark;
     color: white;
@@ -76,8 +85,8 @@ export default {
     color: rgba(0, 0, 0, 0.76);
   }
 
-  h1 { font-size: 3em; }
-  h2 { font-size: 2em; }
+  h1 { font-size: calc(5vw + 0.5em); }
+  h2 { font-size: calc(2.5vw + 0.2em); }
   h1, h2 {
     display: flex;
     justify-content: center;
@@ -94,21 +103,24 @@ export default {
   button {
     border: 1px solid black;
     margin: 1px;
-    @include primary-color-dark-outline;
   }
 
-  button:hover {
-    @include primary-color-light;
-  }
 
   button:focus {
-    @include primary-color-dark;
     outline: none;
   }
 
   button.active {
     @include primary-color-dark;
   }
+
+  button { @include primary-color-dark-outline; }
+  button:hover { @include primary-color-light; }
+  button:active { @include primary-color-dark; }
+
+  button.btn-inverse { @include primary-color-dark; }
+  button.btn-inverse:hover { @include primary-color-light; }
+  button.btn-inverse:active { @include primary-color-dark-outline; }
 
   .btn-big {
     width: 15vw;
@@ -121,14 +133,7 @@ export default {
 
 
   input[type="text"] {
-    height: 50px;
-    width: 500px;
-    padding: 5px;
-
-    border-radius: 5px;
     outline: none;
-
-    display: flex;
 
     @include primary-color-dark-outline
   }

@@ -1,11 +1,14 @@
 <template>
   <div id="generated-message">
     <h2>Mensagem gerada</h2>
-    <div class="center">
+    <div class="container">
 
-      <textarea cols="50" rows="10">
+      <textarea class="generated-comment">
         {{generatedComment}}
       </textarea>
+      <button class="btn-inverse" v-clipboard="generatedComment">
+        Copiar mensagem
+      </button>
 
     </div>
   </div>
@@ -19,6 +22,22 @@
 
 </script>
 
-<style>
+<style scoped>
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  textarea.generated-comment {
+    min-width: 70vw;
+    min-height: 10vh;
+  }
+
+  button {
+    margin: 10px;
+    min-height: 10vh;
+  }
 
 </style>

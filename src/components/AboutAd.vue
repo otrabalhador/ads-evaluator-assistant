@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="about-ad">
     <h2>Descrição do Anúncio</h2>
     <input type="text" v-model="aboutAd" placeholder="This ad is about ...">
   </div>
@@ -7,6 +7,7 @@
 
 <script>
   export default {
+    name: 'about-ad',
     computed: {
       aboutAd: {
         get () {
@@ -22,4 +23,11 @@
 </script>
 
 <style scoped>
+  input[type="text"] {
+    height: 50px;
+    min-width: 75vw;
+    padding: 5px;
+
+    border-radius: 5px;
+  }
 </style>
