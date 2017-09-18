@@ -2,6 +2,7 @@ import templates from './models/templates'
 import aspectRating from './models/aspectRating'
 import overallRating from './models/overallRating'
 import overalRatingQualifier from './models/overalRatingQualifier'
+import aspectRatingWhys from './models/aspectRatingWhys'
 
 const randomFromList = (list) => {
   return list[Math.floor(Math.random() * list.length)]
@@ -47,9 +48,9 @@ export default {
   currentAspect: state => {
     return state.aspectRating.map(el => (el.tag + el.rate))
   },
-  aspectRatingWhys: state => {
+  aspectRatingWhys: () => {
     return query => {
-      return state.aspectRatingWhys.filter(el => removeAccent(el.pt.toLowerCase())
+      return aspectRatingWhys.filter(el => removeAccent(el.pt.toLowerCase())
         .includes(removeAccent(query.toLowerCase())))
     }
   },
