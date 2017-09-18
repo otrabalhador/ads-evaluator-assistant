@@ -7,12 +7,32 @@ const randomFromList = (list) => {
   return list[Math.floor(Math.random() * list.length)]
 }
 
+const removeAccent = (str) => {
+  let string = str
+  let accentMap = {
+    a: /[\xE0-\xE6]/g,
+    e: /[\xE8-\xEB]/g,
+    i: /[\xEC-\xEF]/g,
+    o: /[\xF2-\xF6]/g,
+    u: /[\xF9-\xFC]/g,
+    c: /\xE7/g,
+    n: /\xF1/g
+  }
+
+  for (let letra in accentMap) {
+    let regexp = accentMap[letra]
+    string = string.replace(regexp, letra)
+  }
+
+  return string
+}
+
 const extractFromAspectRatingIndex = (aspectRatingObj) => {
   let tag = aspectRatingObj.tag
   let rate = aspectRatingObj.rate
   let why = aspectRatingObj.why
   if (tag !== '' || why !== '' || rate !== '') {
-    let text = aspectRating[tag][rate]
+    let text = randomFromList(aspectRating[tag][rate])
     return {
       text: text,
       why: why
@@ -29,7 +49,8 @@ export default {
   },
   aspectRatingWhys: state => {
     return query => {
-      return state.aspectRatingWhys.filter(el => el.pt.includes(query))
+      return state.aspectRatingWhys.filter(el => removeAccent(el.pt.toLowerCase())
+        .includes(removeAccent(query.toLowerCase())))
     }
   },
   currentWhy: state => {

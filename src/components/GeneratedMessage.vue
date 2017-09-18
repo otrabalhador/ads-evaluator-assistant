@@ -37,6 +37,14 @@
     border-radius: 5px;
   }
 
+  @media screen and (max-width: 600px) {
+
+    textarea.generated-comment {
+      min-width: 70vw;
+      min-height: 80vh;
+    }
+  }
+
   button {
     margin: 10px;
     min-height: 10vh;
