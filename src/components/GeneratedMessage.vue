@@ -32,7 +32,7 @@
 
   textarea.generated-comment {
     min-width: 70vw;
-    min-height: 10vh;
+    min-height: 20vh;
     padding: 5px;
     border-radius: 5px;
   }
@@ -41,7 +41,7 @@
 
     textarea.generated-comment {
       min-width: 70vw;
-      min-height: 80vh;
+      min-height: 60vh;
     }
   }
 

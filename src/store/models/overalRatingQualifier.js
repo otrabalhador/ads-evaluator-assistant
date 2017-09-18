@@ -18,6 +18,7 @@ export default {
     'amazing',
     'enjoyable',
     'addictive',
-    'great'
+    'great',
+    'perfect'
   ]
 }
