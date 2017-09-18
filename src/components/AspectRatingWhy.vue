@@ -27,7 +27,7 @@
         <input type="text"
                placeholder="outro ..."
                v-model="otherWhy"
-               :class="{ active: currentWhy === otherWhy }"
+               :class="{ active: currentWhy === otherWhy && otherWhy !== '' }"
                @input="setAspectRatingWhy($event.target.value)"
                @click="setAspectRatingWhy($event.target.value)">
         <button class="btn-secondary" @click="otherWhy = ''">Limpar</button>
@@ -56,7 +56,7 @@
     },
     methods: {
       setAspectRatingWhy (why) {
-        if (why) {
+        if (why !== '') {
           this.$store.commit({
             type: 'setAspectRatingWhy',
             why: why,

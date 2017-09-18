@@ -10,11 +10,13 @@ const randomFromList = (list) => {
 const extractFromAspectRatingIndex = (aspectRatingObj) => {
   let tag = aspectRatingObj.tag
   let rate = aspectRatingObj.rate
-  let text = aspectRating[tag][rate]
   let why = aspectRatingObj.why
-  return {
-    text: text,
-    why: why
+  if (tag !== '' || why !== '' || rate !== '') {
+    let text = aspectRating[tag][rate]
+    return {
+      text: text,
+      why: why
+    }
   }
 }
 
@@ -22,10 +24,11 @@ export default {
   aboutAd: state => state.aboutAd,
   aspects: state => state.aspects,
   overallRating: state => state.overallRating,
+  currentAspect: state => {
+    return state.aspectRating.map(el => (el.tag + el.rate))
+  },
   aspectRatingWhys: state => {
     return query => {
-      console.log(query)
-      console.log(state.aspectRatingWhys.filter(el => el.pt.includes(query)))
       return state.aspectRatingWhys.filter(el => el.pt.includes(query))
     }
   },
@@ -38,32 +41,50 @@ export default {
       return [aspect.tag]
     }
   },
-  firstAspect: (state) => {
+  extractFromFirstAspect: (state) => {
     return extractFromAspectRatingIndex(state.aspectRating[0])
   },
-  secondAspect: (state) => {
+  extractFromSecondAspect: (state) => {
     return extractFromAspectRatingIndex(state.aspectRating[1])
   },
   overallRatingText: (state) => {
-    return randomFromList(overallRating[state.overallRating])
+    return state.overallRating ? randomFromList(overallRating[state.overallRating]) : ''
   },
   overallRatingTextQualifier: (state) => {
-    return randomFromList(overalRatingQualifier[state.overallRating])
+    return state.overallRating ? randomFromList(overalRatingQualifier[state.overallRating]) : ''
   },
   placeholders: (state, getters) => {
     return {
       '{{aboutAd}}': getters.aboutAd,
-      '{{firstAspectText}}': getters.firstAspect.text,
-      '{{firstAspectWhy}}': getters.firstAspect.why,
-      '{{secondAspectText}}': getters.secondAspect.text,
-      '{{secondAspectWhy}}': getters.secondAspect.why,
+      '{{firstAspectText}}': getters.extractFromFirstAspect ? getters.extractFromFirstAspect.text : '',
+      '{{firstAspectWhy}}': getters.extractFromFirstAspect ? getters.extractFromFirstAspect.why : '',
+      '{{secondAspectText}}': getters.extractFromSecondAspect ? getters.extractFromSecondAspect.text : '',
+      '{{secondAspectWhy}}': getters.extractFromSecondAspect ? getters.extractFromSecondAspect.why : '',
       '{{overallRatingText}}': getters.overallRatingText,
       '{{overallRatingTextQualifier}}': getters.overallRatingTextQualifier
     }
   },
   generatedComment: (state, getters) => {
-    return randomFromList(templates).replace(/{{\w+}}/g, all => {
-      return getters.placeholders[all] || all
-    })
+    if (getters.validated) {
+      return randomFromList(templates).replace(/{{\w+}}/g, all => {
+        return getters.placeholders[all] || all
+      })
+    }
+  },
+  validated: (state, getters) => {
+    return getters.isAspectRatingEmpty
+  },
+  isAspectRatingEmpty: (state) => {
+    let firstAspect = state.aspectRating[0]
+    if (firstAspect.tag === '' || firstAspect.why === '' || firstAspect.rate === '') {
+      return false
+    }
+
+    let secondAspect = state.aspectRating[1]
+    if (secondAspect.tag === '' || secondAspect.why === '' || secondAspect.rate === '') {
+      return false
+    }
+
+    return true
   }
 }

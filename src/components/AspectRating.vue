@@ -5,15 +5,15 @@
       <template v-for="aspect in aspects">
 
         <div class="single-aspect"
-             :class="{ active: buttonActive === aspect + '1'
-                            || buttonActive === aspect + '2'
-                            || buttonActive === aspect + '3'}">
+             :class="{ active: currentAspect[index] === aspect + '1'
+                            || currentAspect[index] === aspect + '2'
+                            || currentAspect[index] === aspect + '3'}">
           <p>{{aspect}}</p>
         </div>
         <div class="rate">
-          <button class="btn" :class="{ active: buttonActive === aspect + '1' }" @click="setAspectRating(aspect, 1)">1 - not at all</button>
-          <button class="btn" :class="{ active: buttonActive === aspect + '2' }" @click="setAspectRating(aspect, 2)">2 - a little</button>
-          <button class="btn" :class="{ active: buttonActive === aspect + '3' }" @click="setAspectRating(aspect, 3)">3 - a lot</button>
+          <button class="btn" :class="{ active: currentAspect[index] === aspect + '1' }" @click="setAspectRating(aspect, 1)">1 - not at all</button>
+          <button class="btn" :class="{ active: currentAspect[index] === aspect + '2' }" @click="setAspectRating(aspect, 2)">2 - a little</button>
+          <button class="btn" :class="{ active: currentAspect[index] === aspect + '3' }" @click="setAspectRating(aspect, 3)">3 - a lot</button>
         </div>
 
       </template>
@@ -29,12 +29,11 @@
     props: ['index'],
     data () {
       return {
-        buttonActive: { },
         humanReadableIndex: parseInt(this.index) + 1
       }
     },
     computed: {
-      ...mapGetters(['aspects'])
+      ...mapGetters(['aspects', 'currentAspect'])
     },
     methods: {
       setAspectRating (tag, rate) {
@@ -44,9 +43,6 @@
           tag: tag,
           rate: rate
         })
-        this.buttonActive = tag + rate
-        console.log(this.buttonActive)
-//        console.log(this.buttonActive[tag] ? buttonActive[tag][1] : 0)
       }
     }
   }
