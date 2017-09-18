@@ -51,6 +51,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 2vw;
+    justify-items: center;
   }
   @media screen and (min-width: 600px){
     .container {
@@ -61,22 +62,20 @@
         "aspect-rating-1   aspect-rating-why-1"
         "aspect-rating-2   aspect-rating-why-2"
         "generated-message generated-message";
-
-      justify-items: center;
     }
   }
 
   @media screen and (max-width: 600px){
     .container {
       grid-template-areas:
-        "header            header"
-        "about-ad          about-ad"
-        "overall-rating    overall-rating"
-        "aspect-rating-1   aspect-rating-1"
-        "aspect-rating-2   aspect-rating-2"
-        "generated-message generated-message";
-
-      justify-items: center;
+        "header                header"
+        "about-ad              about-ad"
+        "overall-rating        overall-rating"
+        "aspect-rating-1       aspect-rating-1"
+        "aspect-rating-why-1   aspect-rating-why-1"
+        "aspect-rating-2       aspect-rating-2"
+        "aspect-rating-why-2   aspect-rating-why-2"
+        "generated-message     generated-message";
     }
   }
 

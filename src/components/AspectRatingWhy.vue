@@ -6,7 +6,7 @@
       <!-- search -->
       <div class="-item">
         <input type="text" placeholder="filtrar ..." v-model="query">
-        <button class="btn btn-secondary" @click="query = ''">Limpar</button>
+        <button class="btn-secondary" @click="query = ''">Limpar</button>
       </div>
 
       <!-- options -->
@@ -30,7 +30,7 @@
                :class="{ active: currentWhy === otherWhy }"
                @input="setAspectRatingWhy($event.target.value)"
                @click="setAspectRatingWhy($event.target.value)">
-        <button class="btn btn-secondary" @click="otherWhy = ''">Limpar</button>
+        <button class="btn-secondary" @click="otherWhy = ''">Limpar</button>
       </div>
     </div>
   </div>
@@ -84,6 +84,7 @@
 
       * {
         flex-grow: 1;
+        flex-shrink: 1;
         box-sizing: border-box;
         margin: 0;
       }
@@ -91,7 +92,6 @@
       button.btn-secondary {
         margin-left: 5px;
         padding: 5px 0 5px 0;
-        width: 15px;
       }
 
       ul {

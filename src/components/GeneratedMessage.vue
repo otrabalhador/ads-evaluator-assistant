@@ -3,7 +3,7 @@
     <h2>Mensagem gerada</h2>
     <div class="container">
 
-      <textarea class="generated-comment">
+      <textarea @focus="$event.target.select()" class="generated-comment">
         {{generatedComment}}
       </textarea>
       <button class="btn-inverse" v-clipboard="generatedComment">
