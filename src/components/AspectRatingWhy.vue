@@ -48,7 +48,7 @@
     },
     computed: {
       aspectRatingWhys () {
-        return this.$store.getters.aspectRatingWhys(this.query)
+        return this.$store.getters.aspectRatingWhys(this.query, this.index)
       },
       currentWhy () {
         return this.$store.getters.currentWhy[this.index]

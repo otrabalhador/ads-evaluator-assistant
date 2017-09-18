@@ -48,10 +48,17 @@ export default {
   currentAspect: state => {
     return state.aspectRating.map(el => (el.tag + el.rate))
   },
-  aspectRatingWhys: () => {
-    return query => {
-      return aspectRatingWhys.filter(el => removeAccent(el.pt.toLowerCase())
+  aspectRatingWhys: (state) => {
+    return (query, index) => {
+      let aspect = state.aspectRating[index].tag
+      let aspectList = []
+      if (aspect) {
+        aspectList = aspectRatingWhys[aspect].filter(el => removeAccent(el.pt.toLowerCase())
+          .includes(removeAccent(query.toLowerCase())))
+      }
+      let genericList = aspectRatingWhys['generic'].filter(el => removeAccent(el.pt.toLowerCase())
         .includes(removeAccent(query.toLowerCase())))
+      return genericList.concat(aspectList)
     }
   },
   currentWhy: state => {
