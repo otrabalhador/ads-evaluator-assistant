@@ -1,5 +1,7 @@
 <template>
   <div class="comment-generator">
+    <navigation-menu></navigation-menu>
+
     <div class="container">
       <header>
         <h1>Lilappen</h1>
@@ -26,6 +28,7 @@
   import AspectRating from '@/components/AspectRating'
   import AboutAd from '@/components/AboutAd'
   import AspectRatingWhy from '@/components/AspectRatingWhy'
+  import NavigationMenu from '@/components/NavigationMenu'
   export default {
     name: 'comment-generator',
     data () {
@@ -41,7 +44,7 @@
         this.$store.commit('reset')
       }
     },
-    components: {GeneratedMessage, OverallRating, AspectRating, AboutAd, AspectRatingWhy}
+    components: {GeneratedMessage, OverallRating, AspectRating, AboutAd, AspectRatingWhy, NavigationMenu}
   }
 </script>
 
