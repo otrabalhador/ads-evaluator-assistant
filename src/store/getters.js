@@ -101,9 +101,11 @@ export default {
     }
   },
   validated: (state, getters) => {
-    return getters.isAspectRatingEmpty
+    return getters.isAspectRatingOk && getters.isAboutAdOk && getters.isOverallRatingOk
   },
-  isAspectRatingEmpty: (state) => {
+  isAboutAdOk: state => state.aboutAd !== '',
+  isOverallRatingOk: state => state.overallRating !== '',
+  isAspectRatingOk: (state) => {
     let firstAspect = state.aspectRating[0]
     if (firstAspect.tag === '' || firstAspect.why === '' || firstAspect.rate === '') {
       return false
