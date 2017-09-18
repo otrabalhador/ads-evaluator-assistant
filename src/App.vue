@@ -15,7 +15,6 @@ export default {
 <style lang="scss">
   @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300');
 
-
   $primary-color-normal: #29b6f6;
   $primary-color-light: #73e8ff;
   $primary-color-dark: #0086c3;

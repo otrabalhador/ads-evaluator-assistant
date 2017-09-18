@@ -5,9 +5,11 @@
 
       </div>
       <div class="-validated" :class="{true: validated}">
-
+        <md-icon :class="{'md-accent': validated}">check_circle</md-icon>
       </div>
     </div>
+
+
   </div>
 </template>
 
@@ -25,7 +27,7 @@
     top: 0;
     left: 0;
     position: fixed;
-    height: 70px;
+    height: 5vw;
     width: 100%;
 
     display: flex;
@@ -34,19 +36,19 @@
     .-info {
       display: flex;
       flex-direction: row;
-      background-color: gray;
-      width: 50px;
+      /*background-color: gray;*/
+      /*width: 5vw;*/
     }
 
     .-validated {
       display: flex;
       flex-direction: row-reverse;
-      background-color: yellow;
-      width: 50px;
+      /*background-color: yellow;*/
+      width: 5vw;
     }
 
     .-validated.true {
-      background-color: green;
+      /*background-color: green;*/
     }
   }
 
