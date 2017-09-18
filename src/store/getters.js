@@ -22,7 +22,13 @@ export default {
   aboutAd: state => state.aboutAd,
   aspects: state => state.aspects,
   overallRating: state => state.overallRating,
-  aspectRatingWhys: state => state.aspectRatingWhys,
+  aspectRatingWhys: state => {
+    return query => {
+      console.log(query)
+      console.log(state.aspectRatingWhys.filter(el => el.pt.includes(query)))
+      return state.aspectRatingWhys.filter(el => el.pt.includes(query))
+    }
+  },
   currentWhy: state => {
     return state.aspectRating.map(el => el.why)
   },
