@@ -1,6 +1,6 @@
 {
-  "name": "lilappen",
-  "short_name": "Lilappen",
+  "name": "ads-evaluator-assistant",
+  "short_name": "ads-evaluator-assistant",
   "icons": [
     {
       "src": "/static/img/icons/android-chrome-192x192.png",

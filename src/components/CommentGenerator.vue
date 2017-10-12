@@ -4,7 +4,7 @@
 
     <div class="container">
       <header>
-        <h1>Lilappen</h1>
+        <h1>Ads Evaluator Assistant</h1>
         <button class="btn-big btn-secondary" @click="reset">Resetar valores</button>
       </header>
 
